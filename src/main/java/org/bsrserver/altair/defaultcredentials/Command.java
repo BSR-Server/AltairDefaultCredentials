@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import com.velocitypowered.api.proxy.Player;
+import com.velocitypowered.api.proxy.ConsoleCommandSource;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.SimpleCommand;
 
@@ -61,8 +62,8 @@ public class Command implements SimpleCommand {
         CommandSource source = invocation.source();
         String[] args = invocation.arguments();
 
-        // return empty list if source is player
-        if (source instanceof Player) {
+        // return empty list if source is console
+        if (source instanceof ConsoleCommandSource) {
             return List.of();
         }
 
