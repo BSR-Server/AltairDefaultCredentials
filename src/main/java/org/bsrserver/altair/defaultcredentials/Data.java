@@ -12,12 +12,15 @@ import org.slf4j.Logger;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.JSONWriter;
+import com.velocitypowered.api.proxy.Player;
 
 public class Data {
+    private final AltairDefaultCredentials altairDefaultCredentials;
     private final File dataFile;
     private JSONObject users;
 
     public Data(AltairDefaultCredentials plugin) {
+        this.altairDefaultCredentials = plugin;
         Logger logger = plugin.getLogger();
         Path dataDirectory = plugin.getDataDirectory();
 
@@ -51,6 +54,10 @@ public class Data {
         }
     }
 
+    private String getUsername(UUID uuid) {
+        return altairDefaultCredentials.getProxyServer().getPlayer(uuid).map(Player::getUsername).orElse("Unknown");
+    }
+
     public Optional<Credential> getCredential(UUID uuid) {
         if (users == null) {
             return Optional.empty();
@@ -58,11 +65,36 @@ public class Data {
 
         JSONObject user = users.getJSONObject(uuid.toString());
         if (user != null) {
+            return Optional.of(new Credential(
+                    false,
+                    user.getBoolean("got_password"),
+                    user.getString("username"),
+                    user.getString("password")
+            ));
+        } else {
+            return Optional.of(new Credential(
+                    true,
+                    false,
+                    getUsername(uuid),
+                    AltairDefaultCredentials.DEFAULT_PASSWORD
+            ));
+        }
+    }
+
+    public void setGot(UUID uuid) {
+        if (users != null) {
+            JSONObject user = users.getJSONObject(uuid.toString());
+            if (user == null) {
+                user = new JSONObject();
+                user.put("uuid", uuid.toString());
+                user.put("username", getUsername(uuid));
+                user.put("password", AltairDefaultCredentials.DEFAULT_PASSWORD);
+                users.put(uuid.toString(), user);
+            }
+
+            // set and save
             user.put("got_password", true);
             saveData();
-            return Optional.of(new Credential(user.getString("username"), user.getString("password")));
-        } else {
-            return Optional.empty();
         }
     }
 }
