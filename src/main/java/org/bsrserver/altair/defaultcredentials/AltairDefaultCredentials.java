@@ -13,7 +13,7 @@ import com.velocitypowered.api.plugin.annotation.DataDirectory;
 @Plugin(
         id = "altairdefaultcredentials",
         name = "Altair Default Credentials",
-        version = "1.1.0",
+        version = "1.1.1",
         url = "https://www.bsrserver.org:8443/",
         description = "Altair 默认用户名密码",
         authors = {"Andy Zhang"}
