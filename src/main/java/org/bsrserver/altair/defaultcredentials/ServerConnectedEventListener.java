@@ -7,6 +7,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import com.velocitypowered.api.event.Subscribe;
+import com.velocitypowered.api.event.PostOrder;
 import com.velocitypowered.api.event.player.ServerConnectedEvent;
 
 public class ServerConnectedEventListener {
@@ -16,7 +17,7 @@ public class ServerConnectedEventListener {
         this.altairDefaultCredentials = altairDefaultCredentials;
     }
 
-    @Subscribe
+    @Subscribe(order = PostOrder.LATE)
     public void onServerConnectedEvent(ServerConnectedEvent event) {
         if (event.getPreviousServer().isEmpty()) {
             UUID uuid = event.getPlayer().getUniqueId();
