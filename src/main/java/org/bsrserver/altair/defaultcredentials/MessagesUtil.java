@@ -44,8 +44,8 @@ public class MessagesUtil {
         message = message
                 .append(
                         Component
-                                .text("Login to Altair: ")
-                                .color(NamedTextColor.GRAY)
+                                .text("Click to visit the website: ")
+                                .color(NamedTextColor.WHITE)
                 )
                 .append(
                         Component
@@ -57,7 +57,7 @@ public class MessagesUtil {
                 .append(
                         Component
                                 .text(" and ")
-                                .color(NamedTextColor.GRAY)
+                                .color(NamedTextColor.WHITE)
                 )
                 .append(
                         Component

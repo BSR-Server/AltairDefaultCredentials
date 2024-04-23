@@ -30,25 +30,65 @@ public class ServerConnectedEventListener {
 
             // send message
             if (!credential.get().isGot()) {
-                String COMMAND = "/altairdefaultcredentials avoidWelcomeMessage";
-                event.getPlayer().sendMessage(MessagesUtil.getCredentialMessage(credential.get()));
-                event.getPlayer().sendMessage(
-                        Component
-                                .text("Click")
-                                .color(NamedTextColor.GRAY)
-                                .append(
-                                        Component
-                                                .text(" [here] ")
-                                                .color(NamedTextColor.GREEN)
-                                                .hoverEvent(Component.text(COMMAND))
-                                                .clickEvent(ClickEvent.runCommand(COMMAND))
-                                )
-                                .append(
-                                        Component
-                                                .text("to avoid always displaying this message at login.")
-                                                .color(NamedTextColor.GRAY)
-                                )
-                );
+                // commands
+                String GET_COMMAND = "/altairdefaultcredentials get";
+                String AVOID_COMMAND = "/altairdefaultcredentials avoidWelcomeMessage";
+
+                // message
+                Component message = Component.text("-".repeat(40))
+                        .append(Component.text("\n"))
+                        .append(
+                                Component
+                                        .text("[IMPORTANT] ")
+                                        .color(NamedTextColor.GREEN)
+                        )
+                        .append(
+                                Component
+                                        .text("BSR Website is now online!")
+                                        .color(NamedTextColor.WHITE)
+                        )
+                        .append(Component.text("\n"))
+                        .append(
+                                Component
+                                        .text("Click")
+                                        .color(NamedTextColor.WHITE)
+                        )
+                        .append(
+                                Component
+                                        .text(" [here] ")
+                                        .color(NamedTextColor.GREEN)
+                                        .hoverEvent(Component.text(GET_COMMAND))
+                                        .clickEvent(ClickEvent.runCommand(GET_COMMAND))
+                        )
+                        .append(
+                                Component
+                                        .text("to show your default credential and website link.")
+                                        .color(NamedTextColor.WHITE)
+                        )
+                        .append(Component.text("\n"))
+                        .append(
+                                Component
+                                        .text("Click")
+                                        .color(NamedTextColor.WHITE)
+                        )
+                        .append(
+                                Component
+                                        .text(" [here] ")
+                                        .color(NamedTextColor.GREEN)
+                                        .hoverEvent(Component.text(AVOID_COMMAND))
+                                        .clickEvent(ClickEvent.runCommand(AVOID_COMMAND))
+                        )
+                        .append(
+                                Component
+                                        .text("to avoid always displaying this message at login.")
+                                        .color(NamedTextColor.WHITE)
+                        )
+                        .append(Component.text("\n"))
+                        .append(Component.text("-".repeat(40)))
+                        .append(Component.text("\n"));
+
+                // send message to player
+                event.getPlayer().sendMessage(message);
             }
         }
     }
