@@ -1,16 +1,16 @@
 package org.bsrserver.altair.defaultcredentials;
 
-import java.util.List;
-import java.util.UUID;
-import java.util.Optional;
-import java.util.stream.Stream;
-
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import com.velocitypowered.api.proxy.Player;
-import com.velocitypowered.api.proxy.ConsoleCommandSource;
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.SimpleCommand;
+import com.velocitypowered.api.proxy.ConsoleCommandSource;
+import com.velocitypowered.api.proxy.Player;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.stream.Stream;
 
 public class Command implements SimpleCommand {
     private final Data data;

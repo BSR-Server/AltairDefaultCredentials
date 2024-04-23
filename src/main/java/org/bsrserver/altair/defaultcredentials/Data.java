@@ -1,18 +1,18 @@
 package org.bsrserver.altair.defaultcredentials;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.FileOutputStream;
-import java.util.UUID;
-import java.util.Optional;
-import java.nio.file.Path;
-import java.net.MalformedURLException;
-
-import org.slf4j.Logger;
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import com.alibaba.fastjson2.JSONWriter;
 import com.velocitypowered.api.proxy.Player;
+import org.slf4j.Logger;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.UUID;
 
 public class Data {
     private final AltairDefaultCredentials altairDefaultCredentials;

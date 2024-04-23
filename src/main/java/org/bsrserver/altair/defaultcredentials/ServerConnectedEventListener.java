@@ -1,14 +1,14 @@
 package org.bsrserver.altair.defaultcredentials;
 
-import java.util.UUID;
-import java.util.Optional;
-
+import com.velocitypowered.api.event.PostOrder;
+import com.velocitypowered.api.event.Subscribe;
+import com.velocitypowered.api.event.player.ServerConnectedEvent;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
-import com.velocitypowered.api.event.Subscribe;
-import com.velocitypowered.api.event.PostOrder;
-import com.velocitypowered.api.event.player.ServerConnectedEvent;
+
+import java.util.Optional;
+import java.util.UUID;
 
 public class ServerConnectedEventListener {
     private final AltairDefaultCredentials altairDefaultCredentials;
